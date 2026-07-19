@@ -1,0 +1,3 @@
+Soltar aquí las fotos de formaciones/eventos ya reveladas (revelado editorial RK)
+con los nombres formacion-01.jpg … formacion-12.jpg (valen menos, mínimo 3).
+El banner de la Fase 2 se activa solo al detectarlas. Luego: scripts/sincronizar_preview.sh

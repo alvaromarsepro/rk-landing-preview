@@ -756,6 +756,15 @@
   .planets img:nth-child(7n){width:46px;height:46px}
   @media (prefers-reduced-motion:reduce){.planets-track{animation:none!important}}
   @media(max-width:820px){.planets img{width:64px;height:64px}.planets img:nth-child(4n){width:82px;height:82px}.planets img:nth-child(3n){width:46px;height:46px}}
+  /* formación viva: carrete editorial dentro de la Fase 2 — oculto hasta que existan las fotos */
+  .vivas{display:none;margin-top:2.6rem;overflow:hidden;border-top:1px solid rgba(255,255,255,.055);padding-top:1.5rem}
+  .vivas.on{display:block}
+  .vivas-label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 0 1.1rem}
+  .vivas-track{display:flex;align-items:center;gap:1rem;width:max-content;animation:mq 60s linear infinite!important}
+  .vivas img{height:150px;width:auto;border-radius:8px;object-fit:cover;filter:grayscale(.88) sepia(.16) brightness(.88) contrast(1.04);border:1px solid rgba(255,229,144,.22)}
+  .vivas img:nth-child(2n){height:122px}
+  @media (prefers-reduced-motion:reduce){.vivas-track{animation:none!important}}
+  @media(max-width:820px){.vivas img{height:108px}.vivas img:nth-child(2n){height:90px}}
 
   /* ===== dirección de arte: la revista ===== */
   /* aire de página impresa */
@@ -991,6 +1000,15 @@
           <ul>
             <li><span class="tick">✓</span><span><b>Coaching para agentes</b>: foco, productividad y perfiles DiSC</span></li>
           </ul><p class="creed">La estrategia de fondo: ser la referencia de tus relaciones. El negocio por recomendación es el que dura.</p></div>
+          </div>
+          <!-- BANNER FORMACIÓN VIVA · se activa solo: basta soltar las fotos (reveladas) en
+               assets/formaciones/ con nombres formacion-01.jpg … formacion-12.jpg.
+               Pueden ser menos: las que falten se ignoran y el banner aparece con las que haya (mínimo 3). -->
+          <div class="vivas" aria-hidden="true">
+            <p class="vivas-label">La formación, en directo — Escuela de Gerentes · formaciones de agentes · RK Day</p>
+            <div class="vivas-track">
+              <img src="assets/formaciones/formacion-01.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-02.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-03.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-04.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-05.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-06.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-07.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-08.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-09.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-10.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-11.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-12.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-01.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-02.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-03.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-04.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-05.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-06.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-07.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-08.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-09.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-10.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-11.jpg" alt="" loading="lazy"><img src="assets/formaciones/formacion-12.jpg" alt="" loading="lazy">
+            </div>
           </div>
         </div>
         <div class="fase" id="horus" data-fn="03">
@@ -1395,6 +1413,28 @@
       });
     },{threshold:.6}).observe(dropN);
   }
+</script>
+<script>
+/* Formación viva: enseña el carrete solo si hay fotos reales en assets/formaciones/.
+   Sondea cada src una vez (los <img> son lazy y dentro de display:none no cargan solos);
+   los que fallen se quitan del carrete —en sus dos pasadas del bucle— y con 3 o más fotos se abre. */
+(function(){
+  var v=document.querySelector('.vivas');if(!v)return;
+  var imgs=[].slice.call(v.querySelectorAll('img')),srcs={},vivos=0,vistos=0;
+  imgs.forEach(function(im){srcs[im.getAttribute('src')]=true});
+  var unicos=Object.keys(srcs),total=unicos.length;
+  function fin(){
+    if(vistos<total)return;
+    imgs.forEach(function(im){if(!srcs[im.getAttribute('src')])im.remove()});
+    if(vivos>=3)v.classList.add('on');
+  }
+  unicos.forEach(function(src){
+    var p=new Image();
+    p.onload=function(){vivos++;vistos++;fin()};
+    p.onerror=function(){srcs[src]=false;vistos++;fin()};
+    p.src=src;
+  });
+})();
 </script>
 </body>
 </html>
