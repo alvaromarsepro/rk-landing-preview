@@ -601,6 +601,8 @@
   .reveal{opacity:1!important;transform:none!important;transition:none!important}
   .stagger>*{opacity:1!important;transform:none!important}
   *,*::before,*::after{animation:none!important}
+  .strip .mq-track{animation:mq 32s linear infinite!important}
+  @media (prefers-reduced-motion:reduce){.strip .mq-track{animation:none!important}}
   section{padding:clamp(2.8rem,5.5vw,4.5rem) 0}
   .hero{min-height:0;display:block;padding:5.5rem 0 3.5rem;align-items:initial}
   .astro{width:clamp(200px,22vw,380px);bottom:0;opacity:.9}
@@ -978,25 +980,26 @@
       <p class="lead" style="max-width:44rem;margin-top:1rem"><b style="color:var(--gold-soft)">Horus</b> lo mete todo en una pantalla, con una contraseña y por módulos. Y le pone una capa de IA que te enseña lo que va a pasar, no lo que ya pasó.</p>
       <div class="card" style="margin-top:2.2rem"><span class="k">Un lunes cualquiera, 9:02</span><p class="type-fx" style="font-size:1.04rem;margin-top:.5rem">Abres Horus: dos exclusivas a punto de vencer, un agente sin toques esta semana, una operación con arras firmadas y el informe de notaría ya generado. En diez minutos has dirigido lo que antes eran tres llamadas, un Excel y dos sustos.</p></div>
       <figure class="banda"><img src="assets/img/banda-horus.jpg" alt="Un astronauta trabajando con un portátil" loading="lazy"><figcaption>Tu negocio entero, de un vistazo. El control para ti; el día a día, para tu equipo.</figcaption></figure>
-      <p class="eyebrow" style="margin:2.6rem 0 .2rem;color:var(--glow)">La operación · de la captación a la firma</p>
+      <p class="eyebrow" style="margin:2.6rem 0 .2rem;color:var(--glow)">El liderazgo · el mando, en tus manos</p>
       <div class="grid g3" style="margin-top:1rem">
         <div class="card"><span class="k">El embudo</span><h3>Tu negocio entero, de un vistazo</h3><p>Cada operación y en qué fase está: qué se genera hoy y qué va a entrar este mes. Diriges con datos, no a ciegas.</p></div>
         <div class="card"><span class="k">El radar</span><h3>Cada agente, medido en vivo</h3><p>El recorrido de cada agente, de los toques a las arras, gamificado: ves quién necesita ayuda y en qué. Y las comisiones, calculadas solas.</p></div>
         <div class="card"><span class="k">La IA predictiva</span><h3>Te avisa antes, no después</h3><p>Indicadores que se adelantan: dónde se va a atascar el mes, antes de que se atasque.</p></div>
-        <div class="card"><span class="k">Módulo de generación</span><h3>La siembra que trae operaciones</h3><p>Toques, entrevistas y recomendaciones, medidos y premiados: la actividad de hoy son las captaciones del mes que viene.</p></div>
-        <div class="card"><span class="k">Módulo de captación</span><h3>Cada oportunidad, con siguiente paso</h3><p>De la prospección a la exclusiva sin que nada se enfríe — y el marketing del inmueble se dispara solo al captarlo.</p></div>
-        <div class="card"><span class="k">Valoración económica</span><h3>El precio justo, con IA</h3><p>La IA valora el inmueble con datos de mercado: sales a captar con un número que se defiende solo.</p></div>
-        <div class="card"><span class="k">Módulo de clientes</span><h3>Nadie se queda sin respuesta</h3><p>Compradores y vendedores con su ficha, su cualificación y su próxima acción. Cada demanda, cruzada con tu cartera.</p></div>
-        <div class="card"><span class="k">Los expedientes</span><h3>Cero sustos hasta notaría</h3><p>Único por operación, con checklist que no deja avanzar sin la documentación al día.</p></div>
-        <div class="card"><span class="k">Valoración jurídica</span><h3>La firma, blindada</h3><p>Revisa la parte legal de la operación y genera el informe de notaría en un clic. Se acabó mandar papeles sueltos.</p></div>
+      </div>
+      <p class="eyebrow" style="margin:2.6rem 0 .2rem;color:var(--glow)">La operación · de la captación a la firma</p>
+      <div class="grid g3" style="margin-top:1rem">
+        <div class="card"><span class="k">Módulo de generación</span><h3>La siembra que trae operaciones</h3><p>Toques, entrevistas y recomendaciones, medidos y premiados: la actividad de hoy son las captaciones del mes que viene.</p></div><div class="card"><span class="k">Módulo de captación</span><h3>Cada oportunidad, con siguiente paso</h3><p>De la prospección a la exclusiva sin que nada se enfríe — y el marketing del inmueble se dispara solo al captarlo.</p></div><div class="card"><span class="k">Valoración económica</span><h3>El precio justo, con IA</h3><p>La IA valora el inmueble con datos de mercado: sales a captar con un número que se defiende solo.</p></div><div class="card"><span class="k">Módulo de clientes</span><h3>Nadie se queda sin respuesta</h3><p>Compradores y vendedores con su ficha, su cualificación y su próxima acción. Cada demanda, cruzada con tu cartera.</p></div><div class="card"><span class="k">Los expedientes</span><h3>Cero sustos hasta notaría</h3><p>Único por operación, con checklist que no deja avanzar sin la documentación al día.</p></div><div class="card"><span class="k">Valoración jurídica</span><h3>La firma, blindada</h3><p>Revisa la parte legal de la operación y genera el informe de notaría en un clic. Se acabó mandar papeles sueltos.</p></div>
       </div>
       <div class="regions" style="justify-content:flex-start;margin-top:1.2rem">
         <span style="color:var(--glow);border-color:rgba(96,193,230,.45)">y más módulos en camino</span>
       </div>
-      <figure class="banda"><img src="assets/img/banda-ia.jpg" alt="La mano de un astronauta y una mano robótica a punto de tocarse" loading="lazy"><figcaption>Un equipo de IAs que no duerme: disponible 24/7, en todos los departamentos.</figcaption></figure>
-      <p class="eyebrow" style="margin:1.6rem 0 .2rem;color:var(--glow)">Y en la misma plataforma · tu equipo de IA</p>
-      <div class="grid g3" style="margin-top:1rem">
+      <p class="eyebrow" style="margin:2.6rem 0 .2rem;color:var(--glow)">Y en la misma plataforma · la formación</p>
+      <div class="grid" style="margin-top:1rem">
         <div class="card"><span class="k">Formación con IA</span><h3>Un juego, no un temario</h3><p>Vídeos, audiolibros y role plays automatizados, gamificados. Formación viva del día a día, con ejemplos reales — para el agente nuevo y para el veterano.</p></div>
+      </div>
+      <figure class="banda"><img src="assets/img/banda-ia.jpg" alt="La mano de un astronauta y una mano robótica a punto de tocarse" loading="lazy"><figcaption>Un equipo de IAs que no duerme: disponible 24/7, en todos los departamentos.</figcaption></figure>
+      <p class="eyebrow" style="margin:1.6rem 0 .2rem;color:var(--glow)">Y tu equipo de IA</p>
+      <div class="grid g2" style="margin-top:1rem">
         <div class="card"><span class="k">Coaching con IA</span><h3>Te pregunta antes de que preguntes</h3><p>Una IA que acompaña al agente en su día a día: foco, hábitos y productividad, sin agobiar.</p></div>
         <div class="card"><span class="k">Mentor con IA</span><h3>Cada operación, bien dirigida</h3><p>El agente consulta cada operación con su mentor —qué paso dar y cómo— en vez de colgarse de ti. Las operaciones salen mejor, y tú, fuera de la ecuación.</p></div>
       </div>
