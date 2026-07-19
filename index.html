@@ -622,7 +622,7 @@
   .fase-head h3{font-size:clamp(1.8rem,3.4vw,2.6rem)}
   .reconoces{margin:2rem 0 0}
   .testis{gap:2.2rem;margin-top:2.2rem}
-  .drop-num{display:none}
+
   .faces,.planets{padding:1.4rem 0}
   footer{padding-top:2.2rem}
 
@@ -691,7 +691,8 @@
   .reconoces,.eyebrow.grande,.gs-scene .eyebrow{font-size:clamp(1.6rem,3.2vw,2.4rem)}
   .statement .big{font-size:clamp(1.9rem,4vw,2.9rem)}
   .promise .p .t{font-size:clamp(1.8rem,3.4vw,2.4rem)}
-  .drop-num{display:none}
+  .drop-num{display:block;font-size:clamp(2.4rem,6vw,4rem);margin-top:1.6rem;color:var(--ink);font-variant-numeric:tabular-nums}
+  .drop-num.oro{color:var(--gold)}
   .step .pr{font-size:1.15rem}.step.total .pr{font-size:1.45rem}
   .testi .tq p{font-size:1.15rem}
   footer,.cap{font-size:.8rem}
@@ -1168,7 +1169,7 @@
       <div class="statement" style="margin-top:3rem" data-fx="zoom">
         <p class="big">Y con nosotros, <b class="royal">sin royalties</b>.</p>
         <p>Ni un porcentaje de tus operaciones, ni de tu facturación. Hay marcas que se llevan un pellizco de cada venta que haces — échale cuentas con la tuya. Aquí, lo que generas es tuyo. #notevampirizamos</p>
-        <div class="drop-num" id="dropN" aria-hidden="true">+90.000 €/año</div>
+        <div class="drop-num" id="dropN">0 € de royalties</div>
         <p style="margin-top:1.8rem">Todo lo de arriba, <b style="color:var(--gold-soft)">desde 730 €/mes</b>, con cuota a medida de tu estructura.</p>
       </div>
     </div>
@@ -1345,6 +1346,30 @@
   },{threshold:.12,rootMargin:'0px 0px -4% 0px'});
   objetivos.forEach(function(el){el.setAttribute('data-io','');io.observe(el)});
 })();
+
+  // la bajada del precio: de 90.000 €/año a 0 € de royalties
+  var dropN=document.getElementById('dropN');
+  if(dropN&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var lanzado=false;
+    new IntersectionObserver(function(es,o){
+      if(!es[0].isIntersecting||lanzado)return;
+      lanzado=true;o.disconnect();
+      var t0=null,dur=2200;
+      requestAnimationFrame(function paso(t){
+        if(!t0)t0=t;
+        var p=Math.min(1,(t-t0)/dur);
+        var e=1-Math.pow(1-p,3);
+        var v=Math.round(90000*(1-e));
+        if(p<1){
+          dropN.textContent=v.toLocaleString('es-ES')+' €/año';
+          requestAnimationFrame(paso);
+        }else{
+          dropN.textContent='0 € de royalties';
+          dropN.classList.add('oro');
+        }
+      });
+    },{threshold:.6}).observe(dropN);
+  }
 </script>
 </body>
 </html>
